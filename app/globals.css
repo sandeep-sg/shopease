@@ -1,0 +1,25 @@
+@import "tailwindcss";
+body{
+  overflow-x: hidden;
+  /* background: #fafafa; */
+}
+.container-center {
+  margin-inline: auto;
+  padding: 0px 60px;
+  max-width: 1400px;
+}
+@media screen and (max-width: 1024px) {
+  .container-center {
+    padding: 0px 40px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container-center {
+    padding: 0px 30px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .container-center {
+    padding: 0px 20px;
+  }
+}
