@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import GoogleLogo from "../assests/icons/GoogleLogo";
-import { signinAction } from "../actions/nextAuthAction";
 import axios from "axios";
 import useProfile from "../hook/useUser";
 
@@ -130,14 +129,6 @@ export default function SignupPage() {
                   className="bg-orange-500 hover:bg-orange-600 text-white w-full py-2 rounded-xl font-semibold"
                 >
                   {isSubmitting ? "Signuping..." : "Sign up"}
-                </button>
-                <p className=" text-gray-600 font-semibold">Or</p>
-                <button
-                  type="button"
-                  onClick={signinAction}
-                  className="flex justify-center items-center gap-2 cursor-pointer border border-gray-200  text-gray-600 w-full py-2 rounded-xl font-semibold"
-                >
-                  <GoogleLogo /> Sign up with Google
                 </button>
               </div>
             </form>
