@@ -22,8 +22,8 @@ const ProductDetails = ({ productId }) => {
     select: (data) => data.product,
   });
   const { data: user } = useUser();
-  console.log({ user });
   const userId = user?._id;
+  const [isAdding, setIsAdding] = useState(false);
   const handleAddToCart = async (productId) => {
     if (!productSize) {
       alert("Select product size");
@@ -41,13 +41,12 @@ const ProductDetails = ({ productId }) => {
         quantity: 1,
       };
       try {
+        setIsAdding(true);
         const res = await axios.post(`/api/cart`, data, {
           withCredentials: true,
         });
-        console.log({ res }, "add to cart");
-
-        // 👇 this will now trigger a refetch of the query in Header
         await queryClient.invalidateQueries({ queryKey: ["cart", userId] });
+        setIsAdding(false);
       } catch (error) {
         console.error("Failed to add to cart", error);
       }
@@ -119,7 +118,7 @@ const ProductDetails = ({ productId }) => {
               // onClick={() => alert()}
               className="bg-orange-500 text-white px-16 py-3 rounded font-bold cursor-pointer"
             >
-              Add to Cart
+              {isAdding ? "Adding..." : "Add to cart"}
             </button>
           </div>
         </div>
